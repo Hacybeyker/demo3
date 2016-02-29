@@ -1,0 +1,24 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18/02/2016, 11:21:56 AM
+    Author     : <Osorio Perez Carlos Alfredo advancesoft.trujillo@gmail.com>
+*/
+*{
+    text-align: center;
+}
+
+h1 {
+    background-color: #5bc0de;
+}
+
+input{
+    text-align: left;
+}
+
+textarea{
+    text-align: left;
+}

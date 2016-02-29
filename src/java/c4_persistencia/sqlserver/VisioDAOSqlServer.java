@@ -8,6 +8,7 @@ package c4_persistencia.sqlserver;
 import c3_dominio.contratos.IVision;
 import c3_dominio.entidades.Vision;
 import c4_persistencia.GestorJDBC;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,17 @@ public class VisioDAOSqlServer implements IVision{
 
     @Override
     public void crear(Vision vision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = "insert into vision (nombrevision,descripcionvision,imagenvision,activovision) values (?,?,?,?)";
+        try{
+            PreparedStatement sentencia = gestorJDBC.prepararSentencia(consulta);
+            sentencia.setString(1, vision.getNombre());
+            sentencia.setString(2, vision.getDescripcion());
+            sentencia.setString(3, vision.getImagen());
+            sentencia.setString(4, vision.getActivo());
+            sentencia.executeQuery();            
+        }catch(Exception e){
+            
+        }
     }
 
     @Override

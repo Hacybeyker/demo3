@@ -27,8 +27,14 @@ public class GestionarVisionServicio {
         visioDAO = new VisioDAOSqlServer(gestorJDBC);
     }
     
-    public void crear(Vision vision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void crear(Vision vision) throws SQLException {
+        try{
+            gestorJDBC.abrirConexion();
+            visioDAO.crear(vision);
+            gestorJDBC.cerrarConexion();            
+        }catch(Exception e){
+            gestorJDBC.cerrarConexion();
+        }
     }
 
     
