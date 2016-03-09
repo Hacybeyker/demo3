@@ -42,17 +42,46 @@ public class VisioDAOSqlServer implements IVision{
 
     @Override
     public void modificar(Vision vision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = "update vision set nombrevision=?,descripcionvision=?,imagenvision=?,activovision=? where codigovision=" + vision.getCodigo();
+        try{
+            PreparedStatement sentencia = gestorJDBC.prepararSentencia(consulta);
+            sentencia.setString(1, vision.getNombre());
+            sentencia.setString(2, vision.getDescripcion());
+            sentencia.setString(3, vision.getImagen());
+            sentencia.setString(4, vision.getActivo());
+            sentencia.executeQuery();
+        }catch(Exception ex){            
+        }        
     }
 
     @Override
     public void eliminar(Vision vision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = "delete from vision where codigovision = " + vision.getCodigo();
+        try{
+            PreparedStatement sentencia = gestorJDBC.prepararSentencia(consulta);
+            sentencia.executeQuery();
+        }catch(Exception ex){
+            
+        }
     }
 
     @Override
     public Vision buscar(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = "select * from vision where codigovision = " + codigo;
+        Vision vision = new Vision();
+        try{
+            ResultSet resultado = gestorJDBC.ejecutarConsulta(consulta);
+            if(resultado.next()){
+                vision.setCodigo(resultado.getInt(1));
+                vision.setNombre(resultado.getString(2));
+                vision.setDescripcion(resultado.getString(3));
+                vision.setImagen(resultado.getString(4));
+                vision.setActivo(resultado.getString(5));
+            }
+        }catch(Exception e){
+            
+        }
+        return vision;
     }
 
     @Override
@@ -67,7 +96,7 @@ public class VisioDAOSqlServer implements IVision{
                 vision.setNombre(resultado.getString(2));
                 vision.setDescripcion(resultado.getString(3));
                 vision.setImagen(resultado.getString(4));
-                vision.setActivo(String.valueOf((resultado.getInt(5))));
+                vision.setActivo(resultado.getString(5));
                 visiones.add(vision);
             }
         }catch(Exception e){

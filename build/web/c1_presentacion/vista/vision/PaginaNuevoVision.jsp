@@ -14,7 +14,18 @@
     </head>
     <body>
         <h1>Nueva Visión</h1>
-        <form action="#" method="GET" name="FormNuevoVision">
+        <%
+            String mensaje = (String)request.getAttribute("mensaje");
+            if(mensaje!=null){
+        %>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Porfavor, </strong><%= mensaje %>
+                </div>
+        <%
+            }
+        %>
+        <form action="CrearVision" method="GET" name="FormNuevoVision">
             <div class="form-group">
                 <label>Nombre:</label>
                 <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre" maxlength="6" autofocus="autofocus" autocomplete="on" required="required"/>

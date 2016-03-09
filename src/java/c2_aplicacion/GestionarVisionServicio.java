@@ -38,18 +38,38 @@ public class GestionarVisionServicio {
     }
 
     
-    public void modificar(Vision vision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void modificar(Vision vision) throws SQLException {        
+        try{
+            gestorJDBC.abrirConexion();
+            visioDAO.modificar(vision);
+            gestorJDBC.cerrarConexion();
+        }catch(Exception ex){
+            gestorJDBC.cerrarConexion();
+        }
     }
 
     
-    public void eliminar(Vision vision) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void eliminar(Vision vision) throws Exception {
+        try{
+            gestorJDBC.abrirConexion();
+            visioDAO.eliminar(vision);
+            gestorJDBC.cerrarConexion();
+        }catch(Exception ex){
+            gestorJDBC.abrirConexion();
+        }
     }
 
     
-    public Vision buscar(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Vision buscar(int codigo) throws SQLException {
+        Vision vision = new Vision();
+        try{
+            gestorJDBC.abrirConexion();
+            vision = visioDAO.buscar(codigo);
+            gestorJDBC.cerrarConexion();                    
+        }catch(Exception ex){
+            gestorJDBC.cerrarConexion();
+        }
+        return vision;
     }
 
     

@@ -7,3 +7,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
 <!-- Script Empresa -->
+
+<!-- Script para eliminar un registro de una determinada pagina -->
+<script type="text/javascript">
+    function funcionEliminar(pagina,codigo){
+        var estado = confirm('Esta seguro de elimar la pagina');
+        if(estado)
+            window.location= pagina+"?codigovision="+codigo;
+    }
+</script>

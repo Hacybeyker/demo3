@@ -15,6 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>AdvanceSoft - Gestionar Visión</title>
         <%@include file="../../../WEB-INF/jspf/cabezera.jspf" %>
+
     </head>    
     <body>
         <%
@@ -48,8 +49,8 @@
                         <td><%= vision.getDescripcion() %></td>
                         <td><img src="<%= vision.getImagen() %>" alt="Misión" title="Mision" width="50" height="50"/> </td>
                         <td><%= vision.getActivo() %></td>
-                        <td><button type="button" class="glyphicon glyphicon-pencil btn btn-warning"></button></td>
-                        <td><button type="button" class="glyphicon glyphicon-trash btn btn-danger"></button></td>
+                        <td><button type="button" class="glyphicon glyphicon-pencil btn btn-warning" onclick="window.location='EditarVision?codigovision=<%= vision.getCodigo() %>'"></button></td>
+                        <td><button type="button" class="glyphicon glyphicon-trash btn btn-danger" onclick="funcionEliminar('EliminarVision',<%= vision.getCodigo() %>)"></button></td>
                     </tr>
                 <%
                     }

@@ -8,6 +8,10 @@
         <servlet-name>GestionarVisionServlet</servlet-name>
         <url-pattern>/GestionarVision</url-pattern>
         <url-pattern>/NuevoVision</url-pattern>
+        <url-pattern>/CrearVision</url-pattern>
+        <url-pattern>/EditarVision</url-pattern>
+        <url-pattern>/ModificarVision</url-pattern>
+        <url-pattern>/EliminarVision</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

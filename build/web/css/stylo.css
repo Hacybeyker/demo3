@@ -22,3 +22,8 @@ input{
 textarea{
     text-align: left;
 }
+
+.swiper-container {
+    width: 600px;
+    height: 300px;
+} 
